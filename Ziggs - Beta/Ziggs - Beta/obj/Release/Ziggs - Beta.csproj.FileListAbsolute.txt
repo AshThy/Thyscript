@@ -1,0 +1,12 @@
+C:\Users\Edcarlos\Documents\Visual Studio 2017\Projects\Ziggs - Beta\Ziggs - Beta\bin\Release\Ziggs - Beta.exe.config
+C:\Users\Edcarlos\Documents\Visual Studio 2017\Projects\Ziggs - Beta\Ziggs - Beta\bin\Release\Ziggs - Beta.exe
+C:\Users\Edcarlos\Documents\Visual Studio 2017\Projects\Ziggs - Beta\Ziggs - Beta\bin\Release\Ziggs - Beta.pdb
+C:\Users\Edcarlos\Documents\Visual Studio 2017\Projects\Ziggs - Beta\Ziggs - Beta\bin\Release\EloBuddy.dll
+C:\Users\Edcarlos\Documents\Visual Studio 2017\Projects\Ziggs - Beta\Ziggs - Beta\bin\Release\EloBuddy.SDK.dll
+C:\Users\Edcarlos\Documents\Visual Studio 2017\Projects\Ziggs - Beta\Ziggs - Beta\bin\Release\SharpDX.dll
+C:\Users\Edcarlos\Documents\Visual Studio 2017\Projects\Ziggs - Beta\Ziggs - Beta\bin\Release\SharpDX.Direct3D9.dll
+C:\Users\Edcarlos\Documents\Visual Studio 2017\Projects\Ziggs - Beta\Ziggs - Beta\bin\Release\Newtonsoft.Json.dll
+C:\Users\Edcarlos\Documents\Visual Studio 2017\Projects\Ziggs - Beta\Ziggs - Beta\bin\Release\EloBuddy.Sandbox.dll
+C:\Users\Edcarlos\Documents\Visual Studio 2017\Projects\Ziggs - Beta\Ziggs - Beta\obj\Release\Ziggs - Beta.csprojResolveAssemblyReference.cache
+C:\Users\Edcarlos\Documents\Visual Studio 2017\Projects\Ziggs - Beta\Ziggs - Beta\obj\Release\Ziggs - Beta.exe
+C:\Users\Edcarlos\Documents\Visual Studio 2017\Projects\Ziggs - Beta\Ziggs - Beta\obj\Release\Ziggs - Beta.pdb
