@@ -10,6 +10,7 @@ namespace Orianna___Toy
         public static Spell.Skillshot Q;
         public static Spell.Active W, R;
         public static Spell.Targeted E;
+        public static Spell.Targeted Ignite;
 
         internal static void Iniciar()
         {
@@ -20,6 +21,10 @@ namespace Orianna___Toy
             W = new Spell.Active(SpellSlot.W);
             E = new Spell.Targeted(SpellSlot.E, 1100);
             R = new Spell.Active(SpellSlot.R);
+
+            var shollt = Player.Instance.GetSpellSlotFromName("summonerdot");
+            if (shollt != SpellSlot.Unknown)
+                Ignite = new Spell.Targeted(shollt, 600);
         }
     }
 }

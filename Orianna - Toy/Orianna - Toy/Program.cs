@@ -20,6 +20,8 @@ namespace Orianna___Toy
 
                 Menus.Iniciar();
                 Spells.Iniciar();
+
+                Game.OnUpdate += Menus.Update;
             }
 
         }
