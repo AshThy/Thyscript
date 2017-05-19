@@ -3,12 +3,14 @@ using EloBuddy.SDK.Menu.Values;
 using System;
 using EloBuddy.SDK;
 using EloBuddy;
+using SharpDX;
+using EloBuddy.SDK.Rendering;
 
 namespace Orianna___Toy
 {
     internal class Menus
     {
-        private static Menu OriMenu, ComboMenu, LaneMenu, JungleMenu, KilMenu, HarassMenu, Flee, Misc, Draws;
+        private static Menu OriMenu, ComboMenu, LaneMenu, JungleMenu, KilMenu, HarassMenu, Misc, Draws;
         private static Slider ManaManeger, Aly, Mini, Enemy;
         private static ComboBox Prediction;
         //BOOL
@@ -26,7 +28,7 @@ namespace Orianna___Toy
             ComboMenu.Add("ComboR", new CheckBox("Toy Combo (R)"));
             ComboMenu.AddLabel("Settings R");
             Enemy = ComboMenu.Add("UtiEnemy", new Slider("How Many Enemies = {0}", 2, 1, 5));
-            Aly = ComboMenu.Add("Life", new Slider("Use Spell only with HP = {0}", 45,70,100));
+            Aly = ComboMenu.Add("Life", new Slider("Use Spell only with HP = {0}", 45, 70, 100));
             ComboMenu.AddLabel("Settings E");
             ComboMenu.Add("UseE", new CheckBox("Use E Aly"));
             ComboMenu.Add("UseMyHero", new CheckBox("Use E Toy Combo?", false));
@@ -40,7 +42,7 @@ namespace Orianna___Toy
             HarassMenu.Add("H2W", new CheckBox("Harass Toy (W)"));
             HarassMenu.Add("H3E", new CheckBox("Harass Toy (E)"));
             HarassMenu.AddLabel("Settings Mana");
-            ManaManeger = HarassMenu.Add("Minimo", new Slider("Finish Harass = {0}", 45,75,100));
+            ManaManeger = HarassMenu.Add("Minimo", new Slider("Finish Harass = {0}", 45, 75, 100));
             //Lane
             LaneMenu = OriMenu.AddSubMenu("LaneClear");
             LaneMenu.AddLabel("Settings Lane");
@@ -64,12 +66,6 @@ namespace Orianna___Toy
             KilMenu.AddSeparator();
             KilMenu.Add("Kil1", new CheckBox("Steal Spell (R)"));
             KilMenu.Add("Kil2", new CheckBox("Steal Spell (W)"));
-            //Flee
-            Flee = OriMenu.AddSubMenu("Flee");
-            Flee.AddLabel("Settings Flee");
-            Flee.AddSeparator();
-            Flee.Add("F1E", new CheckBox("Spell (E)"));
-            Flee.Add("F1W", new CheckBox("Spell (W)"));
             //Misc
             Misc = OriMenu.AddSubMenu("Misc");
             Misc.AddLabel("Settings Misc");
@@ -77,11 +73,56 @@ namespace Orianna___Toy
             Misc.Add("IG", new CheckBox("Spell Ignite"));
             //Draws
             Draws = OriMenu.AddSubMenu("Draws");
-            Draws.Add("D1Q", new CheckBox("Drawings (Q)"));
-            Draws.Add("D2E", new CheckBox("Drawings (E)"));
-            Draws.Add("DIG", new CheckBox("Drawings (Spell)"));
+            Draws.Add("D1Q", new CheckBox("Range (Q)"));
+            Draws.Add("D1E", new CheckBox("Range (E)"));
+            Draws.Add("DIG", new CheckBox("Range (Spell)"));
             //Comandos
         }
+
+        internal static void Spellbook_OnCastSpell(Spellbook sender, SpellbookCastSpellEventArgs args)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static void BasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static void Draw(EventArgs args)
+        {
+            if (Menus.Draws["D1Q"].Cast<CheckBox>().CurrentValue && Spells.Q.IsLearned)
+            {
+                if (Spells.Q.IsReady())
+                    Circle.Draw(Color.Red, Spells.Q.Range, Player.Instance.Position);
+                if (Menus.Draws["D1E"].Cast<CheckBox>().CurrentValue && Spells.E.IsLearned)
+                    if (Spells.E.IsReady())
+                        Circle.Draw(Color.Blue, Spells.E.Range, Player.Instance.Position);
+                if (Menus.Draws["DIG"].Cast<CheckBox>().CurrentValue && Spells.Ignite.IsLearned)
+                    Circle.Draw(Color.LightGreen, Spells.Ignite.Range, Player.Instance.Position);
+                {
+                    //Incrivel
+                }
+            }
+        }
+
+        internal static void Game_OnTick(EventArgs args)
+        {
+            if (Orbwalker.ActiveModesFlags.Equals(Orbwalker.ActiveModes.Combo))
+            {
+
+            }
+            if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear))
+            {
+
+            }
+            if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.JungleClear))
+            {
+
+            }
+        }
+
+
 
         internal static void Update(EventArgs args)
         {

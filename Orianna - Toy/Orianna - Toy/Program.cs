@@ -22,6 +22,10 @@ namespace Orianna___Toy
                 Spells.Iniciar();
 
                 Game.OnUpdate += Menus.Update;
+                Game.OnTick += Menus.Game_OnTick;
+                Drawing.OnDraw += Menus.Draw;
+                Obj_AI_Base.OnBasicAttack += Menus.BasicAttack;
+                Spellbook.OnCastSpell += Menus.Spellbook_OnCastSpell;
             }
 
         }
