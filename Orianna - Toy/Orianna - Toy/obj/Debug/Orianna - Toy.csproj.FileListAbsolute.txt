@@ -1,0 +1,12 @@
+C:\Users\Edcarlos\documents\visual studio 2017\Projects\Orianna - Toy\Orianna - Toy\obj\Debug\Orianna - Toy.csprojResolveAssemblyReference.cache
+C:\Users\Edcarlos\documents\visual studio 2017\Projects\Orianna - Toy\Orianna - Toy\bin\Debug\Orianna - Toy.exe.config
+C:\Users\Edcarlos\documents\visual studio 2017\Projects\Orianna - Toy\Orianna - Toy\bin\Debug\Orianna - Toy.exe
+C:\Users\Edcarlos\documents\visual studio 2017\Projects\Orianna - Toy\Orianna - Toy\bin\Debug\Orianna - Toy.pdb
+C:\Users\Edcarlos\documents\visual studio 2017\Projects\Orianna - Toy\Orianna - Toy\bin\Debug\EloBuddy.dll
+C:\Users\Edcarlos\documents\visual studio 2017\Projects\Orianna - Toy\Orianna - Toy\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Edcarlos\documents\visual studio 2017\Projects\Orianna - Toy\Orianna - Toy\bin\Debug\SharpDX.dll
+C:\Users\Edcarlos\documents\visual studio 2017\Projects\Orianna - Toy\Orianna - Toy\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Edcarlos\documents\visual studio 2017\Projects\Orianna - Toy\Orianna - Toy\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Edcarlos\documents\visual studio 2017\Projects\Orianna - Toy\Orianna - Toy\obj\Debug\Orianna - Toy.exe
+C:\Users\Edcarlos\documents\visual studio 2017\Projects\Orianna - Toy\Orianna - Toy\obj\Debug\Orianna - Toy.pdb
+C:\Users\Edcarlos\documents\visual studio 2017\Projects\Orianna - Toy\Orianna - Toy\bin\Debug\EloBuddy.Sandbox.dll

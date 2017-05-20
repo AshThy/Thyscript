@@ -5,13 +5,14 @@ using EloBuddy.SDK;
 using EloBuddy;
 using SharpDX;
 using EloBuddy.SDK.Rendering;
+using EloBuddy.SDK.Enumerations;
 
 namespace Orianna___Toy
 {
     internal class Menus
     {
         private static Menu OriMenu, ComboMenu, LaneMenu, JungleMenu, KilMenu, HarassMenu, Misc, Draws;
-        private static Slider ManaManeger, Aly, Mini, Enemy;
+        private static Slider ManaManeger, Aly, Mini;
         private static ComboBox Prediction;
         //BOOL
         public static AIHeroClient meuheroi { get { return ObjectManager.Player; } }
@@ -27,8 +28,9 @@ namespace Orianna___Toy
             ComboMenu.Add("ComboW", new CheckBox("Toy Combo (W)"));
             ComboMenu.Add("ComboR", new CheckBox("Toy Combo (R)"));
             ComboMenu.AddLabel("Settings R");
-            Enemy = ComboMenu.Add("UtiEnemy", new Slider("How Many Enemies = {0}", 2, 1, 5));
-            Aly = ComboMenu.Add("Life", new Slider("Use Spell only with HP = {0}", 45, 70, 100));
+            ComboMenu.Add("UtiEnemy", new Slider("How Many Enemies = {0}", 2, 1, 5));
+            Aly = ComboMenu.Add("Life", new Slider("Use Spell only with HP = {0}", 1, 5, 100));
+            ComboMenu.Add("Execute", new CheckBox("Use R Elimined", false));
             ComboMenu.AddLabel("Settings E");
             ComboMenu.Add("UseE", new CheckBox("Use E Aly"));
             ComboMenu.Add("UseMyHero", new CheckBox("Use E Toy Combo?", false));
@@ -42,7 +44,7 @@ namespace Orianna___Toy
             HarassMenu.Add("H2W", new CheckBox("Harass Toy (W)"));
             HarassMenu.Add("H3E", new CheckBox("Harass Toy (E)"));
             HarassMenu.AddLabel("Settings Mana");
-            ManaManeger = HarassMenu.Add("Minimo", new Slider("Finish Harass = {0}", 45, 75, 100));
+            ManaManeger = HarassMenu.Add("Minimo", new Slider("Finish Harass = {0}", 10, 5, 100));
             //Lane
             LaneMenu = OriMenu.AddSubMenu("LaneClear");
             LaneMenu.AddLabel("Settings Lane");
@@ -93,11 +95,9 @@ namespace Orianna___Toy
         {
             if (Menus.Draws["D1Q"].Cast<CheckBox>().CurrentValue && Spells.Q.IsLearned)
             {
-                if (Spells.Q.IsReady())
-                    Circle.Draw(Color.Red, Spells.Q.Range, Player.Instance.Position);
+                Circle.Draw(Color.Red, Spells.Q.Range, Player.Instance.Position);
                 if (Menus.Draws["D1E"].Cast<CheckBox>().CurrentValue && Spells.E.IsLearned)
-                    if (Spells.E.IsReady())
-                        Circle.Draw(Color.Blue, Spells.E.Range, Player.Instance.Position);
+                    Circle.Draw(Color.Blue, Spells.E.Range, Player.Instance.Position);
                 if (Menus.Draws["DIG"].Cast<CheckBox>().CurrentValue && Spells.Ignite.IsLearned)
                     Circle.Draw(Color.LightGreen, Spells.Ignite.Range, Player.Instance.Position);
                 {
@@ -110,36 +110,69 @@ namespace Orianna___Toy
         {
             if (Orbwalker.ActiveModesFlags.Equals(Orbwalker.ActiveModes.Combo))
             {
-
-            }
-            if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear))
-            {
-
-            }
-            if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.JungleClear))
-            {
-
-            }
-        }
-
-
-
-        internal static void Update(EventArgs args)
-        {
-            var target = TargetSelector.GetTarget(700, DamageType.True, Player.Instance.Position);
-
-            float IginiteDamager = 50 + (20 * meuheroi.Level);
-
-            if (target != null)
-            {
-                float Life10 = target.HPRegenRate * 10;
-
-                if (Menus.Misc["IG"].Cast<CheckBox>().CurrentValue && Spells.Ignite.IsReady() && target.IsValidTarget(Spells.Ignite.Range) &&
-              (IginiteDamager > (target.TotalShieldHealth() + Life10)))
+                var t = TargetSelector.GetTarget(Spells.Q.Range, DamageType.Magical);
+                if (t.IsValidTarget())
                 {
-                    Spells.Ignite.Cast(target);
+                    if (Menus.ComboMenu["ComboQ"].Cast<CheckBox>().CurrentValue)
+                    {
+                        if (Spells.Q.IsReady())
+                        {
+                            var GhotsQ = Spells.Q.GetPrediction(t);
+                            if (GhotsQ != null && GhotsQ.HitChance > HitChance.Medium)
+                            {
+                                Spells.Q.Cast(t);
+                            }
+                        }
+
+                        if (Menus.ComboMenu["ComboW"].Cast<CheckBox>().CurrentValue)
+                        {
+                            if (Spells.W.IsReady())
+                            {
+                                if (BolaEsquerda.BoladoW.CountEnemyHeroesNear > 0)
+                                {
+                                    Spells.W.Cast();
+                                }
+                            }
+                        }
+
+                        if (Menus.ComboMenu["ComboR"].Cast<CheckBox>().CurrentValue)
+                        {
+                            if (Spells.R.IsReady())
+                            {
+                                if (Menus.ComboMenu["Execute"].Cast<CheckBox>().CurrentValue)
+                                {
+                                    var VidaDoMeuRabo = IndicadorSpells.VejoSuaHP(t, BolaEsquerda.BoladoR.DeleydaMinhaRola);
+
+                                    if (BolaEsquerda.BoladoR.IsInBall(t)
+                                        && (IndicadorSpells.R(t) + Player.Instance.GetAutoAttackDamage(t, true) > VidaDoMeuRabo))
+                                    {
+                                        Spells.R.Cast();
+                                    }
+                                }
+                                else
+                                {
+                                    if (BolaEsquerda.BoladoR.CountEnemyHeroesNear >= ComboMenu["UtiEnemy"].Cast<Slider>().CurrentValue)
+                                    {
+                                        Spells.R.Cast();
+                                    }
+                                }
+
+                                if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear))
+                                {
+
+                                }
+                                if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.JungleClear))
+                                {
+
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
     }
 }
+
+
+      
