@@ -9,6 +9,7 @@ namespace Vayne___Lunear.Finalização
 {
     internal class Trump
     {
+        //Teste
         internal static void OnDraw(EventArgs args)
         {
             if (VayneTy.vDraw["UnicoDraw"].Cast<CheckBox>().CurrentValue)
