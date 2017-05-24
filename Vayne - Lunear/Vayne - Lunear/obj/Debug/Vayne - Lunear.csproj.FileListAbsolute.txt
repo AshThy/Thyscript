@@ -1,0 +1,12 @@
+c:\users\edcarlos\documents\visual studio 2017\Projects\Vayne - Lunear\Vayne - Lunear\bin\Debug\Vayne - Lunear.exe.config
+c:\users\edcarlos\documents\visual studio 2017\Projects\Vayne - Lunear\Vayne - Lunear\bin\Debug\Vayne - Lunear.exe
+c:\users\edcarlos\documents\visual studio 2017\Projects\Vayne - Lunear\Vayne - Lunear\bin\Debug\Vayne - Lunear.pdb
+c:\users\edcarlos\documents\visual studio 2017\Projects\Vayne - Lunear\Vayne - Lunear\bin\Debug\EloBuddy.dll
+c:\users\edcarlos\documents\visual studio 2017\Projects\Vayne - Lunear\Vayne - Lunear\bin\Debug\EloBuddy.SDK.dll
+c:\users\edcarlos\documents\visual studio 2017\Projects\Vayne - Lunear\Vayne - Lunear\bin\Debug\SharpDX.dll
+c:\users\edcarlos\documents\visual studio 2017\Projects\Vayne - Lunear\Vayne - Lunear\bin\Debug\SharpDX.Direct3D9.dll
+c:\users\edcarlos\documents\visual studio 2017\Projects\Vayne - Lunear\Vayne - Lunear\bin\Debug\Newtonsoft.Json.dll
+c:\users\edcarlos\documents\visual studio 2017\Projects\Vayne - Lunear\Vayne - Lunear\bin\Debug\EloBuddy.Sandbox.dll
+c:\users\edcarlos\documents\visual studio 2017\Projects\Vayne - Lunear\Vayne - Lunear\obj\Debug\Vayne - Lunear.csprojResolveAssemblyReference.cache
+c:\users\edcarlos\documents\visual studio 2017\Projects\Vayne - Lunear\Vayne - Lunear\obj\Debug\Vayne - Lunear.exe
+c:\users\edcarlos\documents\visual studio 2017\Projects\Vayne - Lunear\Vayne - Lunear\obj\Debug\Vayne - Lunear.pdb
